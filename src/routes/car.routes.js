@@ -5,9 +5,9 @@ const router = Router();
 
 router
     .get('/maisModelos', carController.getBrandsWithMoreModels)
-    .get('/menosModels', carController.getBrandsWithLessModels)
-    .get('/listaMaisModels/:numberOfBrands', carController.getNCarsBrandsWithMoreModels)
-    .get('/listaMenosModels/:numberOfBrands', carController.getNCarsBrandsWithLessModels)
+    .get('/menosModelos', carController.getBrandsWithLessModels)
+    .get('/listaMaisModelos/:numberOfBrands', carController.getNCarsBrandsWithMoreModels)
+    .get('/listaMenosModelos/:numberOfBrands', carController.getNCarsBrandsWithLessModels)
     .post('/listaModelos', carController.getModelsByBrand);
 
 module.exports = router;
