@@ -1,5 +1,6 @@
 const { carHelper } = require('../helpers');
 const { carRepository } = require('../repository');
+const { stringUtils } = require('../utils/string-util');
 
 const getBrandNamesWithMoreCarsModels = async () =>
   carHelper.formatOutput(
@@ -45,7 +46,7 @@ const getCarsModelsByBrand = async (brand) => {
   const cars = await carRepository.getAllCars();
   const { models } = cars.find(
     ({ brand: repoCarBrand }) =>
-      repoCarBrand.toLowerCase() === brand.toLowerCase()
+      stringUtils.lower(repoCarBrand) === stringUtils.lower(brand)
   ) || { models: [] };
   return models;
 };
