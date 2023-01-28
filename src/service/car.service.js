@@ -2,27 +2,25 @@ const { carHelper } = require('../helpers');
 const { carRepository } = require('../repository');
 
 const getBrandNamesWithMoreCarsModels = async () =>
-  carHelper
-    .getMax(carHelper.countCarsModels(await carRepository.getAllCars()))
-    .map((car) => car.brand);
+  carHelper.formatOutput(carHelper
+    .getMax(carHelper.countCarsModels(await carRepository.getAllCars())))
+    
 
 const getBrandNamesWithLessCarsModels = async () =>
-  carHelper
-    .getMin(carHelper.countCarsModels(await carRepository.getAllCars()))
-    .map((car) => car.brand);
+  carHelper.formatOutput(carHelper
+    .getMin(carHelper.countCarsModels(await carRepository.getAllCars())))
+    
 
 const getNCarsBrandNamesWithMoreCarsModels = async (numberOfBrands) => {
-  return carHelper
+  return carHelper.formatOutput(carHelper.slice(carHelper.sort(carHelper
     .countCarsModels(await carRepository.getAllCars())
-    .sort(({ qtdModels: carA }, { qtdModels: carB }) => carB - carA)
-    .slice(0, numberOfBrands).map(({ brand, qtdModels }) => `${brand} - ${qtdModels}`);
+    , { ascending: false }), numberOfBrands), {qtdModels: true})
 };
 
 const getNCarsBrandNamesWithLessCarsModels = async (numberOfBrands) => {
-    return carHelper
-      .countCarsModels(await carRepository.getAllCars())
-      .sort(({ qtdModels: carA }, { qtdModels: carB }) => carA - carB)
-      .slice(0, numberOfBrands).map(({ brand, qtdModels }) => `${brand} - ${qtdModels}`);
+    return carHelper.formatOutput(carHelper.slice(carHelper.sort(carHelper
+        .countCarsModels(await carRepository.getAllCars())
+        , { ascending: true}), numberOfBrands), {qtdModels: true})
   };
 
 module.exports = {
