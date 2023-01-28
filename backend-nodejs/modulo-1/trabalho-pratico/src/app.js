@@ -7,10 +7,10 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/marcas', carRouter)
+app.use('/marcas', carRouter);
 
-app.use('*', pageNotFound)
+app.use('*', pageNotFound);
 
-app.use(handleError)
+app.use(handleError);
 
 module.exports = app;
