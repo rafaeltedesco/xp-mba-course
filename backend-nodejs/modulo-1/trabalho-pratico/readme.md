@@ -69,3 +69,6 @@ seguir a seguinte nomeação:
 
 Observação: nos exemplos de rotas dos itens 3 e 4, o X quer dizer o parâmetro que
 será recebido pela rota.
+
+
+<strong>Nota Obtida: 25/25</strong>
