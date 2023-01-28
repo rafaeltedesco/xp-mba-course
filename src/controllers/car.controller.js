@@ -27,8 +27,13 @@ const getNCarsBrandsWithLessModels = async (req, res) => {
 }
 
 // REQ05
-const getModelsByBrand = async (req, res) => {
+const getModelsByBrand = async (req, res, next) => {
     const { body: { brand }} = req;
+    if (!brand) {
+        const error = new Error('"brand" is missing!')
+        error.status = 400;
+        return next(error)
+    }
     const models = await carService.getCarsModelsByBrand(brand);
     return res.status(200).json(models);
 }
