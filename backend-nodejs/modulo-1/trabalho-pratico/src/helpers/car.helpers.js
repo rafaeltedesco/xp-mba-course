@@ -1,3 +1,5 @@
+const { stringUtils } = require('../utils/string-util');
+
 const countCarsModels = (cars) =>
   cars.map((car) => ({
     brand: car.brand,
@@ -53,6 +55,11 @@ const formatOutput = (cars, options = { qtdModels: false }) => {
     : cars.map(({ brand }) => brand);
 };
 
+const getModelsByBrand = (cars, brand) => cars.find(
+    ({ brand: repoCarBrand }) =>
+      stringUtils.lower(repoCarBrand) === stringUtils.lower(brand)
+  ) || { models: [] };
+
 module.exports = {
   getMax,
   getMin,
@@ -60,4 +67,5 @@ module.exports = {
   sort,
   slice,
   formatOutput,
+  getModelsByBrand,
 };
