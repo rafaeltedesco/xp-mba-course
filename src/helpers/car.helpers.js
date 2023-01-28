@@ -29,17 +29,29 @@ const getMin = (carsModelCounted) =>
     return [car];
   }, []);
 
+const resolveTie = (carA, carB) => {
+    return carA.localeCompare(carB);
+}
+  
+
 const sort = (cars, options = { ascending: true }) => {
   return options.ascending
-    ? cars.sort(({ qtdModels: carA }, { qtdModels: carB }) => carA - carB)
-    : cars.sort(({ qtdModels: carA }, { qtdModels: carB }) => carB - carA);
+    ? cars.sort(
+        ({ brand: carA, qtdModels: qtdA }, { brand: carB, qtdModels: qtdB }) =>
+          qtdA - qtdB === 0 ? resolveTie(carA, carB) : qtdA - qtdB
+      )
+    : cars.sort(({ brand: carA, qtdModels: qtdA }, { brand: carB, qtdModels: qtdB }) =>
+    qtdB - qtdA === 0 ? resolveTie(carA, carB) : qtdB - qtdA
+    );
 };
 
 const slice = (cars, numberOfBrands) => cars.slice(0, numberOfBrands);
 
-const formatOutput = (cars, options = { qtdModels: false}) => {
-    return options.qtdModels ? cars.map(({ brand, qtdModels}) => `${brand} - ${qtdModels}`) : cars.map(({brand}) => brand) 
-}
+const formatOutput = (cars, options = { qtdModels: false }) => {
+  return options.qtdModels
+    ? cars.map(({ brand, qtdModels }) => `${brand} - ${qtdModels}`)
+    : cars.map(({ brand }) => brand);
+};
 
 module.exports = {
   getMax,
@@ -47,5 +59,5 @@ module.exports = {
   countCarsModels,
   sort,
   slice,
-  formatOutput
+  formatOutput,
 };
