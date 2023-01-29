@@ -25,7 +25,8 @@ false = ainda não foi entregue). Exemplo: true.
 
 O arquivo pedidos.json será previamente fornecido com alguns registros inseridos.
 Seus endpoints devem trabalhar considerando a existência deles, não devendo ser
-criado um arquivo limpo para utilização. A estrutura do arquivo é a seguinte:
+criado um arquivo limpo para utilização. 
+
 A propriedade “nextId” deve armazenar sempre o próximo id que será utilizado na
 criação de um novo pedido. A propriedade “pedidos” possui um array com vários
 pedidos, cada um sendo representado por um objeto com os campos descritos
