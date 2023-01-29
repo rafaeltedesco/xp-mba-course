@@ -35,7 +35,7 @@ produto vinculado.
 
 Você deverá desenvolver os endpoints descritos abaixo:
 
-- [ ] 1. Crie um endpoint para criar um pedido. Esse endpoint deverá receber como
+- [X] 1. Crie um endpoint para criar um pedido. Esse endpoint deverá receber como
 parâmetros os campos cliente, produto e valor conforme descritos acima.
 Este pedido deverá ser salvo no arquivo json ‘pedidos.json’ e deverá ter um
 id único associado. No campo “timestamp”, deverão ser salvos a data e a
