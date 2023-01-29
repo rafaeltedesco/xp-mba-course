@@ -13,4 +13,3 @@ const writeFile = async (path, data) => {
 module.exports = {
   writeFile,
 };
-
