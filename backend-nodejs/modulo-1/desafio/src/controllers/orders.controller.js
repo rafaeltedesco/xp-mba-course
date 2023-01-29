@@ -21,7 +21,7 @@ const updateOrder = async (req, res) => {
     client, product, price, delivered,
   });
   return res.status(200).json({
-    message: `Order id ${orderId} was updated`
+    message: `Order id ${orderId} was updated`,
   });
 };
 

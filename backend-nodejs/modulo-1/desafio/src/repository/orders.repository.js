@@ -18,7 +18,9 @@ const createOrder = async ({ client, product, price }) => {
   return newOrderData;
 };
 
-const updateOrder = async (orderId, { client, product, price, delivered}) => {
+const updateOrder = async (orderId, {
+  client, product, price, delivered,
+}) => {
   const ordersData = await getOrders();
   const orderToChangeId = ordersData.pedidos.findIndex(({ id }) => +id === +orderId);
   if (orderToChangeId === -1) {
