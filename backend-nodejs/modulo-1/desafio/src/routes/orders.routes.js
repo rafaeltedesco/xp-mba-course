@@ -3,6 +3,8 @@ const { orderController } = require('../controllers');
 
 const router = Router();
 
-router.post('/', orderController.createOrder);
+router
+  .post('/', orderController.createOrder)
+  .put('/:orderId', orderController.updateOrder);
 
 module.exports = router;
