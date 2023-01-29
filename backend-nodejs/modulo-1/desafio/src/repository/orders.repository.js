@@ -15,6 +15,7 @@ const createOrder = async ({ client, product, price }) => {
   };
   ordersData.pedidos.push(newOrderData);
   await fileWriter.writeFile(config['db-pedidos-path'], ordersData);
+  return newOrderData;
 };
 
 module.exports = {
