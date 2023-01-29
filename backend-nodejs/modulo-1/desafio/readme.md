@@ -53,7 +53,7 @@ inserção.
 
 ---
 
-- [ ] 2. Crie um endpoint para atualizar um pedido. Este endpoint deverá receber
+- [X] 2. Crie um endpoint para atualizar um pedido. Este endpoint deverá receber
 como parâmetros o id do pedido a ser alterado e os campos “cliente”,
 “produto”, “valor” e “entregue”. O endpoint deverá validar se o produto
 informado existe. Caso não exista, ele deverá retornar um erro; caso exista,
