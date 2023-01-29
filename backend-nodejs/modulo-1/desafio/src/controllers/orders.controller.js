@@ -19,8 +19,22 @@ const updateOrder = asyncHandleError(async (req, res) => {
   } = req;
 
   await orderService.updateOrder(orderId, {
-    client, product, price, delivered,
+    client,
+    product,
+    price,
+    delivered,
   });
+  return res.status(200).json({
+    message: `Order id ${orderId} was updated`,
+  });
+});
+
+const updateOrderStauts = asyncHandleError(async (req, res) => {
+  const {
+    params: { orderId },
+    body: { delivered },
+  } = req;
+  await orderService.updateOrderStatus(orderId, delivered);
   return res.status(200).json({
     message: `Order id ${orderId} was updated`,
   });
@@ -29,4 +43,5 @@ const updateOrder = asyncHandleError(async (req, res) => {
 module.exports = {
   createOrder,
   updateOrder,
+  updateOrderStauts,
 };
