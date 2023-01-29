@@ -1,15 +1,16 @@
+const { asyncHandleError } = require('../middlewares/errorHandler');
 const { orderService } = require('../services');
 
-const createOrder = async (req, res) => {
+const createOrder = asyncHandleError(async (req, res) => {
   const {
     body: { client, product, price },
   } = req;
 
   const newOrder = await orderService.createOrder({ client, product, price });
   return res.status(201).json(newOrder);
-};
+});
 
-const updateOrder = async (req, res) => {
+const updateOrder = asyncHandleError(async (req, res) => {
   const {
     params: { orderId },
     body: {
@@ -23,7 +24,7 @@ const updateOrder = async (req, res) => {
   return res.status(200).json({
     message: `Order id ${orderId} was updated`,
   });
-};
+});
 
 module.exports = {
   createOrder,
