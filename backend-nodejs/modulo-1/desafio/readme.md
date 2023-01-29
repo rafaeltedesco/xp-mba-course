@@ -63,7 +63,7 @@ pedidos.json.
 
 ---
 
-- [ ] 3. Crie um endpoint para atualizar o status de entrega do pedido, alterando o
+- [X] 3. Crie um endpoint para atualizar o status de entrega do pedido, alterando o
 campo “entregue” de acordo com o parâmetro informado. Este endpoint
 deverá receber como parâmetros o id do pedido a ser alterado e o novo valor
 para o campo “entregue”, sendo os valores possíveis true ou false. Este
