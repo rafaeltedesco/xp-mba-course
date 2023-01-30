@@ -19,8 +19,11 @@ const updateOrderStatus = async (orderId, deliveryStatus) => {
   await ordersRepository.updateOrderStatus(orderId, deliveryStatus);
 };
 
+const deleteOrder = async (orderId) => ordersRepository.deleteOrder(orderId);
+
 module.exports = {
   createOrder,
   updateOrder,
   updateOrderStatus,
+  deleteOrder,
 };

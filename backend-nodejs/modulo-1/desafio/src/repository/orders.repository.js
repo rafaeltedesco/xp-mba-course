@@ -52,7 +52,15 @@ const updateOrderStatus = async (orderId, deliveryStatus) => {
   const orderToChangeId = orderExists(orderId, ordersData);
   ordersData.pedidos[orderToChangeId].entregue = deliveryStatus;
 
-  save(ordersData);
+  await save(ordersData);
+};
+
+const deleteOrder = async (orderId) => {
+  const ordersData = await getOrders();
+  const orderIdToRemove = orderExists(orderId, ordersData);
+  ordersData.pedidos.splice(orderIdToRemove, 1);
+
+  await save(ordersData);
 };
 
 module.exports = {
@@ -60,4 +68,5 @@ module.exports = {
   createOrder,
   updateOrder,
   updateOrderStatus,
+  deleteOrder,
 };
