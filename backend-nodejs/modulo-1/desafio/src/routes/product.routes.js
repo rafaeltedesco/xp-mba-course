@@ -4,6 +4,7 @@ const { productController } = require('../controllers');
 const router = Router();
 
 router
-  .get('/', productController.getTotalPriceByOrderedProduct);
+  .get('/total-price', productController.getTotalPriceByOrderedProduct)
+  .get('/top-sellings', productController.getTopSellingProducts);
 
 module.exports = router;
