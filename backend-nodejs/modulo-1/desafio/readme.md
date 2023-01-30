@@ -78,7 +78,7 @@ pedidos.json.
 
 ---
 
-- [ ] 5. Crie um endpoint para consultar um pedido em específico. Este endpoint
+- [X] 5. Crie um endpoint para consultar um pedido em específico. Este endpoint
 deverá receber como parâmetro o id do pedido e retornar suas informações.
 4
 
