@@ -106,3 +106,5 @@ pedidos e retorná-los em ordem decrescente, seguidos pela sua quantidade.
 exemplo: [“Pizza A - 30”, “Pizza B – 27”, “Pizza C – 25”, “Pizza D – 23”, “Pizza
 E – 21”, “Pizza F – 19”, “Pizza G – 17”]. O endpoint deve considerar somente
 os pedidos já entregues.
+
+<strong>Nota Obtida: 40/40</strong>
