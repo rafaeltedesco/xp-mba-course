@@ -72,7 +72,7 @@ de ID informado, alterando-o no arquivo pedidos.json.
 
 ---
 
-- [ ] 4. Crie um endpoint para excluir um pedido. Este endpoint deverá receber
+- [X] 4. Crie um endpoint para excluir um pedido. Este endpoint deverá receber
 como parâmetro o id do pedido e realizar sua exclusão no arquivo
 pedidos.json.
 
