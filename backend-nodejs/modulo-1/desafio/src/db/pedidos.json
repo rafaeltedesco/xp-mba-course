@@ -1,5 +1,5 @@
 {
-    "nextId": 511,
+    "nextId": 513,
     "pedidos": [
         {
             "id": 1,
@@ -4055,6 +4055,22 @@
             "valor": 10,
             "entregue": true,
             "timestamp": "2023-01-30T10:32:57.387Z"
+        },
+        {
+            "id": 511,
+            "cliente": "Rafael Tedesco",
+            "produto": "pizza teste",
+            "valor": 10,
+            "entregue": true,
+            "timestamp": "2023-01-30T10:45:07.877Z"
+        },
+        {
+            "id": 512,
+            "cliente": "Rafael T",
+            "produto": "pizza teste",
+            "valor": 10,
+            "entregue": false,
+            "timestamp": "2023-01-30T10:46:27.625Z"
         }
     ]
 }

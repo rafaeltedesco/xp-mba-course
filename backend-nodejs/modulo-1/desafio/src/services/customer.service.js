@@ -1,17 +1,7 @@
-const { orderCalculator } = require('../helpers');
-const { ordersRepository } = require('../repository');
+const { orderCalculator, orderFilter } = require('../helpers');
 
 const getTotalPriceByCustomer = async (customer) => {
-  const orders = (await ordersRepository.getOrders()).pedidos;
-  const selectedCustomerOrders = orders.filter(({
-    cliente,
-  }) => cliente?.toLowerCase() === customer.toLowerCase());
-  if (selectedCustomerOrders.length === 0) {
-    const error = new Error('Error: Orders Not found for this customer');
-    error.status = 404;
-    throw error;
-  }
-  const deliveredOrders = selectedCustomerOrders.filter(({ entregue }) => entregue);
+  const deliveredOrders = await orderFilter.getDeliveredItemsBy('cliente', customer);
   return orderCalculator.getTotalPrice(deliveredOrders);
 };
 
