@@ -3,10 +3,10 @@ const { orderService } = require('../services');
 
 const createOrder = asyncHandleError(async (req, res) => {
   const {
-    body: { client, product, price },
+    body: { customer, product, price },
   } = req;
 
-  const newOrder = await orderService.createOrder({ client, product, price });
+  const newOrder = await orderService.createOrder({ customer, product, price });
   return res.status(201).json(newOrder);
 });
 
@@ -14,12 +14,12 @@ const updateOrder = asyncHandleError(async (req, res) => {
   const {
     params: { orderId },
     body: {
-      client, product, price, delivered,
+      customer, product, price, delivered,
     },
   } = req;
 
   await orderService.updateOrder(orderId, {
-    client,
+    customer,
     product,
     price,
     delivered,

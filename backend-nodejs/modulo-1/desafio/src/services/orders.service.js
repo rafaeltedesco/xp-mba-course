@@ -1,13 +1,13 @@
 const { ordersRepository } = require('../repository');
 
-const createOrder = async ({ client, product, price }) => ordersRepository
-  .createOrder({ client, product, price });
+const createOrder = async ({ customer, product, price }) => ordersRepository
+  .createOrder({ customer, product, price });
 
 const updateOrder = async (orderId, {
-  client, product, price, delivered,
+  customer, product, price, delivered,
 }) => ordersRepository
   .updateOrder(orderId, {
-    client, product, price, delivered,
+    customer, product, price, delivered,
   });
 
 const updateOrderStatus = async (orderId, deliveryStatus) => {

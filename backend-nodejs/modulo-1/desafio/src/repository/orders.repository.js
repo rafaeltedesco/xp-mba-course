@@ -5,11 +5,11 @@ const save = async (ordersData) => fileWriter.writeFile(config['db-pedidos-path'
 
 const getOrders = async () => fileReader.readFile(config['db-pedidos-path']);
 
-const createOrder = async ({ client, product, price }) => {
+const createOrder = async ({ customer, product, price }) => {
   const ordersData = await getOrders();
   const newOrderData = {
     id: ordersData.nextId++,
-    cliente: client,
+    cliente: customer,
     produto: product,
     valor: price,
     entregue: false,
@@ -32,13 +32,13 @@ const orderExists = (orderId, ordersData) => {
 };
 
 const updateOrder = async (orderId, {
-  client, product, price, delivered,
+  customer, product, price, delivered,
 }) => {
   const ordersData = await getOrders();
   const orderToChangeId = orderExists(orderId, ordersData);
   ordersData.pedidos[orderToChangeId] = {
     ...ordersData.pedidos[orderToChangeId],
-    cliente: client,
+    cliente: customer,
     produto: product,
     valor: price,
     entregue: delivered,
