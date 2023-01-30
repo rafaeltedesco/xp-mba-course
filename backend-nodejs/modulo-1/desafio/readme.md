@@ -91,7 +91,7 @@ informação. O endpoint deve considerar somente os pedidos já entregues.
 
 ---
 
-- [ ] 7. Crie um endpoint para consultar o valor total de pedidos já realizados para
+- [X] 7. Crie um endpoint para consultar o valor total de pedidos já realizados para
 um determinado produto. O endpoint deverá receber como parâmetro o
 produto, realizar a soma dos valores de todos os pedidos deste produto
 específico e retornar essa informação. O endpoint deve considerar somente
