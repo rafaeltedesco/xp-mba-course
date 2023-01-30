@@ -63,10 +63,17 @@ const deleteOrder = async (orderId) => {
   await save(ordersData);
 };
 
+const getOrderById = async (orderId) => {
+  const orders = (await getOrders()).pedidos;
+  const order = orders.find(({ id }) => +id === +orderId);
+  return order || null;
+};
+
 module.exports = {
   getOrders,
   createOrder,
   updateOrder,
   updateOrderStatus,
   deleteOrder,
+  getOrderById,
 };

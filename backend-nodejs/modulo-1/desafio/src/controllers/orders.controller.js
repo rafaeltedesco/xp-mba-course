@@ -51,9 +51,19 @@ const deleteOrder = asyncHandleError(async (req, res) => {
   return res.status(204).json();
 });
 
+const getOrderById = asyncHandleError(async (req, res) => {
+  const {
+    params: { orderId },
+  } = req;
+
+  const order = await orderService.getOrderById(orderId);
+  return res.status(200).json(order);
+});
+
 module.exports = {
   createOrder,
   updateOrder,
   updateOrderStauts,
   deleteOrder,
+  getOrderById,
 };
