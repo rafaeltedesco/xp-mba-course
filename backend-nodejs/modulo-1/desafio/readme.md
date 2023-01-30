@@ -84,7 +84,7 @@ deverá receber como parâmetro o id do pedido e retornar suas informações.
 
 ---
 
-- [ ] 6. Crie um endpoint para consultar o valor total de pedidos já realizados por
+- [X] 6. Crie um endpoint para consultar o valor total de pedidos já realizados por
 um mesmo cliente. O endpoint deverá receber como parâmetro o cliente,
 realizar a soma dos valores de todos os seus pedidos e retornar essa
 informação. O endpoint deve considerar somente os pedidos já entregues.
