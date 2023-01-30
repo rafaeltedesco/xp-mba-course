@@ -1,5 +1,5 @@
 {
-    "nextId": 508,
+    "nextId": 511,
     "pedidos": [
         {
             "id": 1,
@@ -4031,6 +4031,30 @@
             "valor": 55,
             "entregue": false,
             "timestamp": "2023-01-30T10:19:38.352Z"
+        },
+        {
+            "id": 508,
+            "cliente": "Rafael Moutinho",
+            "produto": "pizza teste",
+            "valor": 55,
+            "entregue": true,
+            "timestamp": "2023-01-30T10:32:31.365Z"
+        },
+        {
+            "id": 509,
+            "cliente": "Rafael Moutinho",
+            "produto": "pizza teste 2",
+            "valor": 10,
+            "entregue": false,
+            "timestamp": "2023-01-30T10:32:36.985Z"
+        },
+        {
+            "id": 510,
+            "cliente": "Rafael Moutinho",
+            "produto": "pizza teste",
+            "valor": 10,
+            "entregue": true,
+            "timestamp": "2023-01-30T10:32:57.387Z"
         }
     ]
 }
