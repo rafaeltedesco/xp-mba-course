@@ -45,8 +45,6 @@ const deleteOrder = asyncHandleError(async (req, res) => {
     params: { orderId },
   } = req;
 
-  console.log('here');
-
   await orderService.deleteOrder(orderId);
   return res.status(204).json();
 });
