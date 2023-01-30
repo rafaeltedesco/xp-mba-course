@@ -9,15 +9,6 @@ const getTotalPriceByOrderedProduct = async (product) => {
   return orderCalculator.getTotalPrice(deliveredOrders);
 };
 
-/* Crie um endpoint para retornar os produtos mais vendidos e a quantidade
-de vezes em que estes foram pedidos. O endpoint não deve receber
-parâmetros. O endpoint deve calcular os produtos que mais possuem
-pedidos e retorná-los em ordem decrescente, seguidos pela sua quantidade.
-exemplo: [“Pizza A - 30”, “Pizza B – 27”, “Pizza C – 25”, “Pizza D – 23”, “Pizza
-E – 21”, “Pizza F – 19”, “Pizza G – 17”]. O endpoint deve considerar somente
-os pedidos já entregues.
-*/
-
 const getTopSellingProducts = async () => {
   const orders = (await ordersRepository.getOrders()).pedidos;
   const deliveredOrders = orders.filter(({ entregue }) => entregue);
