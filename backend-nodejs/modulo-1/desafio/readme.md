@@ -99,7 +99,7 @@ os pedidos já entregues.
 
 ---
 
-- [ ] 8. Crie um endpoint para retornar os produtos mais vendidos e a quantidade
+- [X] 8. Crie um endpoint para retornar os produtos mais vendidos e a quantidade
 de vezes em que estes foram pedidos. O endpoint não deve receber
 parâmetros. O endpoint deve calcular os produtos que mais possuem
 pedidos e retorná-los em ordem decrescente, seguidos pela sua quantidade.
