@@ -1,3 +1,4 @@
+const { orderCalculator } = require('../helpers');
 const { ordersRepository } = require('../repository');
 
 const getTotalPriceByCustomer = async (customer) => {
@@ -11,9 +12,7 @@ const getTotalPriceByCustomer = async (customer) => {
     throw error;
   }
   const deliveredOrders = selectedCustomerOrders.filter(({ entregue }) => entregue);
-  return deliveredOrders.reduce((acc, nextOrder) => ({
-    valor: acc.valor + nextOrder.valor,
-  }), { valor: 0 });
+  return orderCalculator.getTotalPrice(deliveredOrders);
 };
 
 module.exports = {
