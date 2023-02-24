@@ -1,14 +1,9 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import * as sinon from 'sinon';
+import * as animalMock from '../mocks/animal/animal.mock';
 import app from '../../src/app';
 import connection from '../../src/database/connection';
-
-// 1) Criação de um animal ✅
-// − URL: http://localhost:3000/animal
-// − Método HTTP: POST
-// − Parâmetros: objeto JSON com o nome do animal, tipo do animal e o id
-// do proprietário deste animal.
 
 // 2) Atualização de um animal
 // − URL: http://localhost:3000/animal ✅
@@ -91,5 +86,14 @@ describe('Test Animal', function () {
                 message: 'Cannot create an Animal with invalid Owner Id'
             })
         })
+    })
+    describe('Test /GET', function () {
+        it('should return all animals and status 200', async function () {
+            sinon.stub(connection, 'query').resolves({rows:animalMock.animals})
+            const response = await chai.request(app)
+                .get('/animal')
+            expect(response).to.have.status(200)
+            expect(response.body).to.deep.equal(animalMock.animals)
+        }) 
     })
 })
