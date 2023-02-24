@@ -53,6 +53,7 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('Test Animal', function () {
+    beforeEach(sinon.restore)
     describe('Test /POST', function () {
         it('should create an animal with valid data', async function () {
             sinon.stub(connection, 'query').
@@ -65,13 +66,29 @@ describe('Test Animal', function () {
             const response = await chai.request(app)
                 .post('/animal')
                 .send({
-                    nome: '',
+                    nome: 'Boston Terrier',
                     tipo: 'Cachorro',
                     proprietario_id: 1
                 })
             expect(response).to.have.status(201);
             expect(response.body).to.deep.equal({
                 message: 'New Animal created!'
+            })
+        })
+        it('should return status 401 when invalid owner', async function () {
+            sinon.stub(connection, 'query')
+                .onFirstCall().resolves({rows: []})
+                .onSecondCall().resolves()
+            const response = await chai.request(app)
+                .post('/animal')
+                .send({
+                    nome: 'Magyar agár',
+                    tipo: 'Cachorro',
+                    proprietario_id: 999
+                })
+            expect(response).to.have.status(401)
+            expect(response.body).to.deep.equal({
+                message: 'Cannot create an Animal with invalid Owner Id'
             })
         })
     })

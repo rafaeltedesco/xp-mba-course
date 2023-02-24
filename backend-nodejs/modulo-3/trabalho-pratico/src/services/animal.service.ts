@@ -25,7 +25,7 @@ export class AnimalService {
   async create(data: any): Promise<{ error: boolean, message?: string }> {
     const animal = animalValidator.validate(data)
     const ownerExists = await ownerModel.findById(animal.proprietario_id);
-    if (!ownerExists) return { error: true, message: '`Cannot create and Animal with invalid Owner Id' }
+    if (!ownerExists) return { error: true, message: 'Cannot create an Animal with invalid Owner Id' }
     await animalModel.create(animal);
     return { error: false }
   }
