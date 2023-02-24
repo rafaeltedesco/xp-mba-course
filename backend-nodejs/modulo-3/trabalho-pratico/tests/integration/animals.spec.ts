@@ -17,13 +17,6 @@ import connection from '../../src/database/connection';
 // − Parâmetros: id do animal passado diretamente na URL, exemplo de um
 // id de valor 15 passado na URL: http://localhost:3000/animal/15.
 
-// 5) Consulta de um animal em específico (pegar o id do animal e retornar um
-// objeto JSON com suas informações). ✅
-// − URL: http://localhost:3000/animal/{animal_id}
-// − Método HTTP: GET
-// − Parâmetros: id do animal passado diretamente na URL, exemplo de um
-// id de valor 15 passado na URL: http://localhost:3000/animal/15
-
 // 6) Consulta dos animais de um proprietário em específico (pegar o id do
 // proprietário na URL e retornar uma lista dos seus animais, sendo cada animal
 // representado por um objeto JSON com todas as propriedades). ✅
@@ -96,6 +89,15 @@ describe('Test Animal', function () {
                 .get('/animal/1')
             expect(response).to.have.status(200)
             expect(response.body).to.deep.equal(animalMock.animal)
+        })
+        it('should return status 404 when animal does not exist', async function () {
+            sinon.stub(connection, 'query').resolves({rows: []})
+            const response = await chai.request(app)
+                .get('/animal/999')
+            expect(response).to.have.status(404)
+            expect(response.body).to.deep.equal({
+                message: "Animal with id 999 not found!"
+            })
         })
     })
 })
