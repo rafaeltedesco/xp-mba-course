@@ -141,6 +141,15 @@ describe('Test Owner Route', function () {
       expect(response).to.have.status(200)
       expect(response.body).to.deep.equal(ownerMocks.owner)
     })
+    it('should return status 404 when owner not found', async function () {
+      sinon.stub(connection, 'query').resolves({rows: []})
+      const response = await chai.request(app)
+        .get('/proprietario/999')
+      expect(response).to.have.status(404);
+      expect(response.body).to.deep.equal({
+        message: 'Owner with id 999 not found!'
+      })
+    })
   })
   
 })
