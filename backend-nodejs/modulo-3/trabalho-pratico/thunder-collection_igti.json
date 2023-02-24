@@ -1,0 +1,218 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "igti",
+    "dateExported": "2023-02-24T23:01:55.604Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "7c67cbce-7c26-48b9-8d34-dd9e1006af8d",
+            "name": "modulo-3",
+            "containerId": "",
+            "created": "2023-02-24T22:46:16.810Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "a7d9588b-c96f-4b43-b4b9-20ff770ca7e2",
+            "name": "trabalho-pratico",
+            "containerId": "7c67cbce-7c26-48b9-8d34-dd9e1006af8d",
+            "created": "2023-02-24T22:46:23.328Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "ae38e21f-ce3b-478b-a54d-00927bc7b4e7",
+            "name": "proprietarios",
+            "containerId": "a7d9588b-c96f-4b43-b4b9-20ff770ca7e2",
+            "created": "2023-02-24T22:46:31.023Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "1a8e3430-8549-4c5c-bad2-a9a976a291e7",
+            "name": "animais",
+            "containerId": "a7d9588b-c96f-4b43-b4b9-20ff770ca7e2",
+            "created": "2023-02-24T22:46:42.045Z",
+            "sortNum": 40000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "04ae4ed4-a426-4b7b-b43f-805ba980f391",
+            "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
+            "containerId": "ae38e21f-ce3b-478b-a54d-00927bc7b4e7",
+            "name": "GET proprietarios",
+            "url": "http://localhost:3000/proprietario",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-02-24T22:46:51.678Z",
+            "modified": "2023-02-24T22:47:11.216Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e6984b0a-09e5-4ea1-a582-0f0802f6e2ce",
+            "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
+            "containerId": "ae38e21f-ce3b-478b-a54d-00927bc7b4e7",
+            "name": "GET proprietario By ID",
+            "url": "http://localhost:3000/proprietario/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-02-24T22:54:58.831Z",
+            "modified": "2023-02-24T22:55:14.357Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d12b1c78-9030-4ac8-b472-966ab23eb0eb",
+            "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
+            "containerId": "1a8e3430-8549-4c5c-bad2-a9a976a291e7",
+            "name": "GET animal",
+            "url": "http://localhost:3000/animal",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-02-24T22:57:51.025Z",
+            "modified": "2023-02-24T22:57:57.394Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "8482a5fe-7333-4654-919d-d58d0e35f749",
+            "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
+            "containerId": "ae38e21f-ce3b-478b-a54d-00927bc7b4e7",
+            "name": "POST proprietario",
+            "url": "http://localhost:3000/proprietario",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-02-24T22:55:21.967Z",
+            "modified": "2023-02-24T22:56:14.670Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"Rafa\",\n  \"telefone\": \"11111111\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ee6dbf09-158b-4241-bd96-b5b203eac1ab",
+            "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
+            "containerId": "1a8e3430-8549-4c5c-bad2-a9a976a291e7",
+            "name": "GET animal By ID",
+            "url": "http://localhost:3000/animal/1",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-02-24T22:58:00.766Z",
+            "modified": "2023-02-24T22:58:10.336Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5eaec79d-d37c-48b0-adb0-a770272c746a",
+            "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
+            "containerId": "ae38e21f-ce3b-478b-a54d-00927bc7b4e7",
+            "name": "DELETE proprietario",
+            "url": "http://localhost:3000/proprietario/7",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-02-24T22:56:20.539Z",
+            "modified": "2023-02-24T22:56:49.350Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "13397af2-fe78-4cc9-b266-6f728ccafbc4",
+            "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
+            "containerId": "1a8e3430-8549-4c5c-bad2-a9a976a291e7",
+            "name": "GET animal By proprietario",
+            "url": "http://localhost:3000/animal?proprietario_id=1",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-02-24T22:58:18.552Z",
+            "modified": "2023-02-24T22:58:32.953Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "proprietario_id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "089c8ac1-216b-4012-81e8-c1023b957ab2",
+            "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
+            "containerId": "ae38e21f-ce3b-478b-a54d-00927bc7b4e7",
+            "name": "UPDATE proprietario",
+            "url": "http://localhost:3000/proprietario/7",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2023-02-24T22:56:53.845Z",
+            "modified": "2023-02-24T22:57:32.833Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"Rafa\",\n  \"telefone\": \"12344455\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "86a4df3c-c94a-4acd-a4dc-4feddbbebb4c",
+            "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
+            "containerId": "1a8e3430-8549-4c5c-bad2-a9a976a291e7",
+            "name": "POST animal",
+            "url": "http://localhost:3000/animal",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-02-24T22:58:36.768Z",
+            "modified": "2023-02-24T22:59:26.780Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"petz\",\n  \"tipo\": \"Cachorro\",\n  \"proprietario_id\": 1\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "aff5ffaa-3a2f-4fef-acb5-6f5480ddc420",
+            "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
+            "containerId": "1a8e3430-8549-4c5c-bad2-a9a976a291e7",
+            "name": "DELETE animal",
+            "url": "http://localhost:3000/animal/10",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-02-24T22:59:31.988Z",
+            "modified": "2023-02-24T23:00:00.993Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "caaf990c-9169-488f-819e-5993bcc48147",
+            "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
+            "containerId": "1a8e3430-8549-4c5c-bad2-a9a976a291e7",
+            "name": "Update Animal",
+            "url": "http://localhost:3000/animal/10",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2023-02-24T23:00:04.889Z",
+            "modified": "2023-02-24T23:01:43.602Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"mew\",\n  \"tipo\": \"Gato\",\n  \"proprietario_id\": 1\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
