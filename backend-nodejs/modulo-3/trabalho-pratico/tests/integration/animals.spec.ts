@@ -17,13 +17,6 @@ import connection from '../../src/database/connection';
 // − Parâmetros: id do animal passado diretamente na URL, exemplo de um
 // id de valor 15 passado na URL: http://localhost:3000/animal/15.
 
-// 4) Consulta de todos os animais (retornar uma lista com todos os animais,
-// sendo cada animal representado por um objeto JSON com todas as
-// propriedades). ✅
-// − URL: http://localhost:3000/animal
-// − Método HTTP: GET
-// − Parâmetros: sem parâmetros.
-
 // 5) Consulta de um animal em específico (pegar o id do animal e retornar um
 // objeto JSON com suas informações). ✅
 // − URL: http://localhost:3000/animal/{animal_id}
@@ -95,5 +88,14 @@ describe('Test Animal', function () {
             expect(response).to.have.status(200)
             expect(response.body).to.deep.equal(animalMock.animals)
         }) 
+    })
+    describe('Test /GET/:id', function () {
+        it('should return an animal with id 1', async function () {
+            sinon.stub(connection, 'query').resolves({rows: [animalMock.animal]})
+            const response = await chai.request(app)
+                .get('/animal/1')
+            expect(response).to.have.status(200)
+            expect(response.body).to.deep.equal(animalMock.animal)
+        })
     })
 })
