@@ -1,6 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import * as sinon from 'sinon';
+import * as ownerMocks from '../mocks/owner/owner.mock';
 import app from '../../src/app';
 import connection from '../../src/database/connection';
 import { beforeEach } from 'mocha';
@@ -123,6 +124,22 @@ describe('Test Owner Route', function () {
       expect(response.body).to.deep.equal({
         message: 'Cannot delete owner with animals'
       })
+    })
+  })
+  describe('Test /GET', function () {
+    it('should return all owners', async function () {
+      sinon.stub(connection, 'query').resolves({rows: ownerMocks.owners});
+      const response = await chai.request(app)
+        .get('/proprietario')
+      expect(response).to.have.status(200);
+      expect(response.body).to.deep.equal(ownerMocks.owners)
+    })
+    it('should return owner with id 1', async function () {
+      sinon.stub(connection, 'query').resolves({rows: [ownerMocks.owner]})
+      const response = await chai.request(app)
+        .get('/proprietario/1')
+      expect(response).to.have.status(200)
+      expect(response.body).to.deep.equal(ownerMocks.owner)
     })
   })
   
