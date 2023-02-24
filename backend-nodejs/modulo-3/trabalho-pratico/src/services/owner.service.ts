@@ -32,6 +32,7 @@ export class OwnerService {
 
   async delete(id: number): Promise<{ error: boolean, message?: string, type?: string }> {
     const animals = await animalModel.findAllByOwner(Number(id));
+    console.log(animals, 'animals')
     if (animals.length > 0) {
       return { error: true, message: 'Cannot delete owner with animals', type: 'UNAUTHORIZED'}
     }

@@ -6,13 +6,6 @@ import connection from '../../src/database/connection';
 import { beforeEach } from 'mocha';
 
 
-// 3) Exclusão de um proprietário (antes de excluir um proprietário, verificar se
-// existem animais cadastrados para ele. Caso exista, bloquear a exclusão). ✅
-// − URL: http://localhost:3000/proprietario/{proprietario_id}
-// − Método HTTP: DELETE
-// − Parâmetros: id do proprietário passado diretamente na URL, exemplo de
-// um id de valor 15 passado na URL: http://localhost:3000/proprietario/15.
-
 // 4) Consulta de todos os proprietários (retornar uma lista com todos os
 // proprietários, sendo cada proprietário representado por um objeto JSON com
 // todas as propriedades). ✅
@@ -107,6 +100,29 @@ describe('Test Owner Route', function () {
       expect(response).to.have.status(400);
 
 
+    })
+  })
+  describe('Test /DELETE', function () {
+    it('should return status 204 when delete owner', async function () {
+      sinon.stub(connection, 'query')
+        .onFirstCall().resolves({rows: []})
+        .onSecondCall().resolves({rowCount: 1})
+      const response = await chai.request(app)
+        .delete('/proprietario/7')
+
+      expect(response).to.have.status(204);
+    })
+    it('should return status 401 when owner has pets', async function () {
+      sinon.stub(connection, 'query')
+        .onFirstCall().resolves({rows: [{ animal_id: 3, nome: 'Tutu', tipo: 'Cachorro', proprietario_id: 1 }]})
+        .onSecondCall().resolves({ rowCount: 0 })
+      const response = await chai.request(app)
+        .delete('/proprietario/1')
+      
+      expect(response).to.have.status(401)
+      expect(response.body).to.deep.equal({
+        message: 'Cannot delete owner with animals'
+      })
     })
   })
   
