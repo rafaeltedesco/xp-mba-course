@@ -6,22 +6,6 @@ import app from '../../src/app';
 import connection from '../../src/database/connection';
 import { beforeEach } from 'mocha';
 
-
-// 4) Consulta de todos os proprietários (retornar uma lista com todos os
-// proprietários, sendo cada proprietário representado por um objeto JSON com
-// todas as propriedades). ✅
-// − URL: http://localhost:3000/proprietario
-// − Método HTTP: GET
-// − Parâmetros: sem parâmetros
-
-// 5) Consulta de um proprietário em específico (pegar o id do proprietário e
-// retornar um objeto JSON com suas informações) ✅
-// − URL: http://localhost:3000/proprietario/{proprietario_id}
-// − Método HTTP: GET
-// − Parâmetros: id do proprietário passado diretamente na URL, exemplo de
-// um id de valor 15 passado na URL: http://localhost:3000/proprietario/15
-
-
 chai.use(chaiHttp);
 
 const { expect } = chai;
