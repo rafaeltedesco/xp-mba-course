@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  backend:
+    image: node
+    ports:
+      - $NODE_PORT:3000
+    stdin_open: true
+    env_file:
+      - .env
+    tty: true
+    volumes:
+      - ./:/app/
+    working_dir: /app
+    depends_on:
+      - db
+    command: bash -c "npm i && npm start"
+  db:
+    image: postgres
+    ports:
+      - $DB_PORT:5432
+    environment:
+      - POSTGRES_USER=$DB_USER
+      - POSTGRES_PASSWORD=$DB_PASS
+      - POSTGRES_DB=$DB_DBNAME
+    restart: always
+    volumes:
+      - ./src/misc/:/docker-entrypoint-initdb.d/
+      - ./data/:/var/lib/postgresql/data/
