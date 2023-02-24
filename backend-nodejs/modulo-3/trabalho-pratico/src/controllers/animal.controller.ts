@@ -5,9 +5,6 @@ import animalValidator from '../services/validators/animalValidator';
 import { HttpResponse500, HttpResponseCreated, HttpResponseNoContent, HttpResponseNotFound, HttpResponseOK, HttpResponseUnauthorized } from '../utils/http/httpResponses';
 import { AnimalService } from '../services/animal.service';
 
-const animalModel = new Animal();
-const ownerModel = new Owner();
-
 const animalService = new AnimalService();
 
 export class AnimalController {

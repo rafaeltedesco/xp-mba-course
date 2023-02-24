@@ -7,6 +7,4 @@ const connection = new Pool({
   database: process.env.DB_DBNAME,
 })
 
-console.log(connection);
-
 export default connection;

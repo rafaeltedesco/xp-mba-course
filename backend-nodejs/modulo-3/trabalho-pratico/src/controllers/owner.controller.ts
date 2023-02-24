@@ -4,8 +4,6 @@ import { Owner } from '../models/Owner';
 import { HttpResponse500, HttpResponseBadRequest, HttpResponseCreated, HttpResponseNoContent, HttpResponseNotFound, HttpResponseOK, HttpResponseUnauthorized } from '../utils/http/httpResponses';
 import { OwnerService } from '../services/owner.service';
 
-const animalModel = new Animal();
-const ownerModel = new Owner();
 const ownerService = new OwnerService();
 
 export class OwnerController {
@@ -57,7 +55,7 @@ export class OwnerController {
     }
     catch (err) {
       if (err instanceof Error) {
-        return new HttpResponseUnauthorized(res).sendResponse({
+        return new HttpResponseBadRequest(res).sendResponse({
           message: err.message
         })
       }
