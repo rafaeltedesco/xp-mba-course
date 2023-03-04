@@ -100,4 +100,13 @@ describe('Test Animal', function () {
             })
         })
     })
+    describe('Test /DELETE', function () {
+        it('should return status 204 when delete valid animal', async function () {
+            const animalId = 1
+            sinon.stub(connection, 'query').resolves({rowCount: 1})
+            const response = await chai.request(app)
+                .delete(`/animal/${animalId}`)
+            expect(response).to.have.status(204)
+        })
+    })
 })
