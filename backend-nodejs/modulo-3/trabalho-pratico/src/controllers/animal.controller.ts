@@ -1,7 +1,4 @@
 import { Request, Response } from 'express';
-import { Animal } from '../models/Animal';
-import { Owner } from '../models/Owner';
-import animalValidator from '../services/validators/animalValidator';
 import { HttpResponse500, HttpResponseCreated, HttpResponseNoContent, HttpResponseNotFound, HttpResponseOK, HttpResponseUnauthorized } from '../utils/http/httpResponses';
 import { AnimalService } from '../services/animal.service';
 

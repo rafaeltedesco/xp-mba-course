@@ -77,3 +77,29 @@ http://localhost:3000/animal?proprietario_id=15 (Sugestão: pode ser
 usado a mesma estrutura do endpoint do item 4 que consulta todos os
 animais, só que aqui nesse caso ele receberia um parâmetro para filtrar
 o proprietário).
+
+
+---
+
+1) Cadastrar um serviço realizado: 🟩
+− URL: http://localhost:3000/servico
+− Método HTTP: POST
+− Parâmetros: objeto JSON com a descrição e valor do serviço e o id do
+animal o qual o serviço foi realizado.
+
+2) Consultar os serviços cadastrados (retornar todos os serviços realizados): 🟩
+− URL: http://localhost:3000/servico
+− Método HTTP: GET
+− Parâmetros: sem parâmetros.
+
+3) Consulta dos serviços realizados em animais de determinado proprietário 🟩
+(pegar o id do proprietário na URL e retornar um objeto JSON com os
+serviços realizados por seus animais):
+− URL: http://localhost:3000/servico?proprietario_id={proprietario_id}
+− Método HTTP: GET
+− Parâmetros: id do proprietário passado diretamente na URL, exemplo
+de um id de valor 15 passado na URL:
+http://localhost:3000/servico?proprietario_id=15 (Sugestão: pode ser
+usado a mesma estrutura do endpoint do item 2 que consulta todos
+os serviços, só que aqui, nesse caso, ele receberia um parâmetro para
+filtrar o proprietário).

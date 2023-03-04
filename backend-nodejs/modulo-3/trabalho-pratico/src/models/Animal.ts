@@ -1,4 +1,4 @@
-import { Query, QueryResult } from 'pg';
+import { QueryResult } from 'pg';
 import connection from '../database/connection';
 import { TAnimal, TAnimalInput } from '../types/TAnimal';
 
