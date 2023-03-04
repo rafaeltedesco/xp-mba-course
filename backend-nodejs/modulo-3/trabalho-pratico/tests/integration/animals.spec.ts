@@ -2,6 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import * as sinon from 'sinon';
 import * as animalMock from '../mocks/animal/animal.mock';
+import * as ownerMock from '../mocks/owner/owner.mock';
 import app from '../../src/app';
 import connection from '../../src/database/connection';
 
@@ -113,6 +114,25 @@ describe('Test Animal', function () {
             expect(response.body).to.be.deep.equal({
                 length: 2, animals: animalMock.animalsOwner2
             })
+        })
+        it('should update an animal that belongs to someone', async function () {
+            const owner = ownerMock.owner
+            sinon.stub(connection, 'query')
+                .onFirstCall().resolves({rows: [{
+                    owner
+                }]})
+                .onSecondCall().resolves({rowCount:1})
+            const response = await chai.request(app)
+                .put('/animal/1')
+                .send({
+                    proprietario_id: 1,
+                    nome: 'Ratonero Murciano de Huerta',
+                    tipo: 'Cachorro'
+                })
+            expect(response).to.have.status(200)
+            expect(response.body).to.deep.equal({
+                message: 'Animal updated'
+              })
         })
     })
 })
