@@ -1,3 +1,18 @@
+export const animalsOwner2 = [
+  {
+    "animal_id": 2,
+    "nome": "Nala",
+    "tipo": "Cachorro",
+    "proprietario_id": 2
+  },
+  {
+    "animal_id": 3,
+    "nome": "Mimi",
+    "tipo": "Gato",
+    "proprietario_id": 2
+  },
+]
+
 
 export const animals = [
     {

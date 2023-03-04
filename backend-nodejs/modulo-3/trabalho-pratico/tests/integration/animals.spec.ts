@@ -11,12 +11,6 @@ import connection from '../../src/database/connection';
 // − Parâmetros: objeto JSON com o id do animal que será atualizado, o
 // nome, tipo e id do proprietário do animal que serão atualizados.
 
-// 3) Exclusão de um animal ✅
-// − URL: http://localhost:3000/animal/{animal_id}
-// − Método HTTP: DELETE
-// − Parâmetros: id do animal passado diretamente na URL, exemplo de um
-// id de valor 15 passado na URL: http://localhost:3000/animal/15.
-
 // 6) Consulta dos animais de um proprietário em específico (pegar o id do
 // proprietário na URL e retornar uma lista dos seus animais, sendo cada animal
 // representado por um objeto JSON com todas as propriedades). ✅
@@ -107,6 +101,20 @@ describe('Test Animal', function () {
             const response = await chai.request(app)
                 .delete(`/animal/${animalId}`)
             expect(response).to.have.status(204)
+        })
+    })
+    describe('Test /GET?proprietario_id', function () {
+        it('should return all animais from owner with id 2', async function () {
+            sinon.stub(connection, 'query').resolves({rows: animalMock.animalsOwner2})
+            const response = await chai.request(app)
+                .get('/animal')
+                .query({
+                    proprietario_id: 2
+                })
+            expect(response).to.have.status(200)
+            expect(response.body).to.be.deep.equal({
+                length: 2, animals: animalMock.animalsOwner2
+            })
         })
     })
 })
