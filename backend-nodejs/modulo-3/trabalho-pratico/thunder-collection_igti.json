@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "igti",
-    "dateExported": "2023-02-24T23:01:55.604Z",
+    "dateExported": "2023-03-04T19:43:16.640Z",
     "version": "1.1",
     "folders": [
         {
@@ -31,6 +31,13 @@
             "containerId": "a7d9588b-c96f-4b43-b4b9-20ff770ca7e2",
             "created": "2023-02-24T22:46:42.045Z",
             "sortNum": 40000
+        },
+        {
+            "_id": "0f00cc88-08ba-406a-8c97-5f221c0320b9",
+            "name": "servicos",
+            "containerId": "a7d9588b-c96f-4b43-b4b9-20ff770ca7e2",
+            "created": "2023-03-04T19:30:56.368Z",
+            "sortNum": 50000
         }
     ],
     "requests": [
@@ -100,11 +107,11 @@
             "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
             "containerId": "1a8e3430-8549-4c5c-bad2-a9a976a291e7",
             "name": "GET animal By ID",
-            "url": "http://localhost:3000/animal/1",
+            "url": "http://localhost:3000/animal/999",
             "method": "GET",
             "sortNum": 30000,
             "created": "2023-02-24T22:58:00.766Z",
-            "modified": "2023-02-24T22:58:10.336Z",
+            "modified": "2023-02-24T23:31:34.321Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -210,6 +217,66 @@
             "body": {
                 "type": "json",
                 "raw": "{\n  \"nome\": \"mew\",\n  \"tipo\": \"Gato\",\n  \"proprietario_id\": 1\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5643653a-fe3e-4ef9-8bae-eda8270dd187",
+            "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
+            "containerId": "0f00cc88-08ba-406a-8c97-5f221c0320b9",
+            "name": "/GET Servicos",
+            "url": "http://localhost:3000/servico",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2023-03-04T19:31:07.609Z",
+            "modified": "2023-03-04T19:31:22.922Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4817b9d6-6d87-4343-a2a1-f641b1c21fd9",
+            "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
+            "containerId": "0f00cc88-08ba-406a-8c97-5f221c0320b9",
+            "name": "/GET Servicos Pet por Proprietário",
+            "url": "http://localhost:3000/servico?proprietario_id=2",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-03-04T19:31:25.963Z",
+            "modified": "2023-03-04T19:31:49.844Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "proprietario_id",
+                    "value": "2",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "ed9cc16b-a9db-4bdf-867a-6b689938a259",
+            "colId": "4707da39-2edb-4b59-9cc2-3ae41237de71",
+            "containerId": "0f00cc88-08ba-406a-8c97-5f221c0320b9",
+            "name": "/POST proprietário",
+            "url": "http://localhost:3000/servico",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2023-03-04T19:31:58.396Z",
+            "modified": "2023-03-04T19:41:22.292Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "proprietario_id",
+                    "value": "2",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"descricao\": \"Teste Serviço\",\n  \"valor\": 500\n}",
                 "form": []
             },
             "tests": []
