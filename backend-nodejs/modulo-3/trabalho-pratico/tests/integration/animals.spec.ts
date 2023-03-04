@@ -11,18 +11,6 @@ import connection from '../../src/database/connection';
 // − Parâmetros: objeto JSON com o id do animal que será atualizado, o
 // nome, tipo e id do proprietário do animal que serão atualizados.
 
-// 6) Consulta dos animais de um proprietário em específico (pegar o id do
-// proprietário na URL e retornar uma lista dos seus animais, sendo cada animal
-// representado por um objeto JSON com todas as propriedades). ✅
-// − URL: http://localhost:3000/animal?proprietario_id={proprietario_id}
-// − Método HTTP: GET
-// − Parâmetros: id do proprietário passado diretamente na URL, exemplo de
-// um id de valor 15 passado na URL:
-// http://localhost:3000/animal?proprietario_id=15 (Sugestão: pode ser
-// usado a mesma estrutura do endpoint do item 4 que consulta todos os
-// animais, só que aqui nesse caso ele receberia um parâmetro para filtrar
-// o proprietário).
-
 chai.use(chaiHttp);
 
 const { expect } = chai;
@@ -101,6 +89,16 @@ describe('Test Animal', function () {
             const response = await chai.request(app)
                 .delete(`/animal/${animalId}`)
             expect(response).to.have.status(204)
+        })
+        it('should return 404 when delete invalid animal', async function () {
+            const animalId = 999
+            sinon.stub(connection, 'query').resolves({rowCount: 0})
+            const response = await chai.request(app)
+                .delete(`/animal/${animalId}`)
+            expect(response).to.have.status(404)
+            expect(response.body).to.deep.equal({
+                "message": "Animal with id 999 not found!"
+              })
         })
     })
     describe('Test /GET?proprietario_id', function () {
