@@ -1,4 +1,5 @@
-import { Pool} from 'pg';
+import { Pool } from 'pg';
+import { MongoClient } from 'mongodb';
 
 const connection = new Pool({
   host: process.env.DB_HOST,
@@ -7,6 +8,12 @@ const connection = new Pool({
   database: process.env.DB_DBNAME,
 })
 
-console.log(connection)
+const mongoCredentials = `${process.env.MONGO_USER || 'root'}:${process.env.MONGO_PASS || 'root'}`
+const mongoURL = `mongodb://${mongoCredentials}@${process.env.MONGO_HOST || 'localhost'}:${process.env.MONGO_PORT || '27017'}`
+export const mongoDBConnection = {
+  connect: ()=> MongoClient.connect(
+    mongoURL
+  )
+}
 
 export default connection;

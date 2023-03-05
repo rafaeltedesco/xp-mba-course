@@ -1,5 +1,6 @@
 import { Post } from "../models/Post"
 import { TPostInput } from "../types/TPost"
+import postValidator from "./validators/postValidator"
 
 export class PostService {
 
@@ -8,6 +9,7 @@ export class PostService {
         return this.postModel.findAll()
     }
     async create(post: TPostInput) {
-        return this.postModel.create(post)
+        const validPost = postValidator.validate(post)
+        return this.postModel.create(validPost)
     }
 }
