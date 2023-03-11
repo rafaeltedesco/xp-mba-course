@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  node:
+    image: node
+    ports: 
+      - 5678:5678
+    env_file:
+      - .env
+    working_dir: /usr/app/consulta_credito/
+    volumes:
+      - ./:/usr/app/consulta_credito/
+    depends_on:
+      - db
+    stdin_open: true
+    tty: true
+  db:
+    image: postgres
+    env_file:
+      - .env
+    restart: always
+   
