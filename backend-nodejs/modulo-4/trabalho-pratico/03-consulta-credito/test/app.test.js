@@ -6,6 +6,7 @@ describe('Testes de Integração', () => {
   beforeEach(async () => {
     await db.cliente.destroy({ where: {} });
     await db.consulta.destroy({ where: {} });
+    await db.produto.destroy({ where: { } });
   });
 
   afterAll(async () => db.sequelize.close());
@@ -120,7 +121,7 @@ describe('Testes de Integração', () => {
     expect(res.body.erro).toBeDefined();
     expect(res.status).toBe(400);
   });
-  test.only('CENÁRIO 05', async () => {
+  test('CENÁRIO 05', async () => {
     const novosClientes = [clienteJoao, clienteMauricio];
     await db.cliente.bulkCreate(novosClientes);
     const response = await request(app)
@@ -129,4 +130,48 @@ describe('Testes de Integração', () => {
     expect(response.status).toBe(200);
     expect(response.body).toMatchObject(novosClientes);
   });
+  test('should create a new product', async () => {
+    const validPayload = {
+      codigo: 'abc123',
+      descricao: 'produto de teste',
+      preco: 12.2,
+    };
+    const response = await request(app)
+      .post('/produto')
+      .send(validPayload);
+    expect(response.status).toEqual(201);
+    expect(response.body).toMatchObject(validPayload);
+  });
+  test('should get all products', async () => {
+    const products = [
+      { codigo: 'abc123', descricao: 'product 1', preco: 12.5 },
+      { codigo: 'abc456', descricao: 'product 2', preco: 12.23 },
+      { codigo: 'abc789', descricao: 'product 3', preco: 15.75 },
+    ];
+    await db.produto.bulkCreate(products);
+    const response = await request(app)
+      .get('/produto');
+    expect(response.status).toEqual(200);
+    expect(response.body).toMatchObject(products);
+  });
+  test('should update a product', async () => {
+    const product = { codigo: 'abc123', descricao: 'produto1', preco: 10.5 };
+    await db.produto.create(product);
+    const response = await request(app)
+      .put('/produto/abc123')
+      .send({
+        descricao: 'produto42',
+        preco: 122.75,
+      });
+    expect(response.status).toEqual(200);
+    expect(response.body).toMatchObject({ codigo: product.codigo, descricao: 'produto42', preco: 122.75 });
+  });
+  test('should delete a product', async () => {
+    const product = { codigo: 'abc123', descricao: 'produto1', preco: 10.5 };
+    await db.produto.create(product);
+    const response = await request(app)
+      .delete('/produto/abc123');
+    expect(response.status).toEqual(200);
+    expect(response.body).toMatchObject({ message: 'apagado com sucesso' });
+  })
 });
